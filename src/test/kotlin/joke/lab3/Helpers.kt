@@ -26,7 +26,7 @@ object DriverFactory {
 
     val BROWSERS_CLASSES =
         listOf(
-//            arrayOf(FirefoxDriver::class.java),
+            arrayOf(FirefoxDriver::class.java),
             arrayOf(ChromeDriver::class.java)
         )
 }

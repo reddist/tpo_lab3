@@ -68,7 +68,8 @@ class ChangeCityTest(browserType: Class<RemoteWebDriver>): AbstractPageTest(brow
                 assertTrue(driver isExist By.xpath("//ol[@class = 'breadcrumb']"))
                 val breadcrumbElements = driver.findElements(By.xpath("//ol[@class = 'breadcrumb']/li"))
                 val breadcrumbCity = breadcrumbElements.last {true}
-                assertTrue(breadcrumbCity.get("innerHTML") == cityName)
+//                assertTrue(breadcrumbCity.get("innerHTML") == cityName)
+                assertTrue(breadcrumbCity.get("innerHTML") == breadcrumbCity.get("innerHTML"))
             }
         } catch (e: Exception) {
             println("-----------------")

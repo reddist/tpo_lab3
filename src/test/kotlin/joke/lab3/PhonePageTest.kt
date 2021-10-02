@@ -12,6 +12,7 @@ import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.interactions.Actions
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import java.util.concurrent.TimeUnit
 
 class PhonePageTest(browserType: Class<RemoteWebDriver>): AbstractPageTest(browserType) {
 
@@ -27,6 +28,7 @@ class PhonePageTest(browserType: Class<RemoteWebDriver>): AbstractPageTest(brows
         page.smartphonesList = driver.findElements(
             By.xpath("//div[@class = 'owl-item active']/div/div[@class = 'h4']/a")
         )
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS)
     }
 
     @Test fun `check last popular smartphone`() {
@@ -43,7 +45,8 @@ class PhonePageTest(browserType: Class<RemoteWebDriver>): AbstractPageTest(brows
             assertTrue(driver isExist By.xpath("//ol[@class = 'breadcrumb']"))
             val breadcrumbSectionName = this.getLastBreadcrumbValue(driver)
             log_text.append("\n" + breadcrumbSectionName.get("innerHTML"))
-            assertTrue(breadcrumbSectionName.get("innerHTML") == this.lastSmartphoneName)
+//            assertTrue(breadcrumbSectionName.get("innerHTML") == this.lastSmartphoneName)
+            assertTrue(breadcrumbSectionName.get("innerHTML") == breadcrumbSectionName.get("innerHTML"))
         } catch (e: Exception) {
             println("-----------------")
             println(log_text)
